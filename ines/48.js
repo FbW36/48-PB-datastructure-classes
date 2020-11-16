@@ -54,7 +54,7 @@ class Clock {
       .replace("m", mins)
       .replace("s", secs);
 
-    return output;
+    console.log(output);
   };
 
   stop() {
@@ -69,7 +69,6 @@ class Clock {
 
 let clock = new Clock({ template: "h:m:s" });
 clock.start();
-console.log(clock.render());
 
 //4
 class TV {
