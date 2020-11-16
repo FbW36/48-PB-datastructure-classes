@@ -36,7 +36,7 @@ class Person
 const person = new Person()
 person.setName('John');
 person.setAge(19);
-console.log(person.describe());
+console.log( 'Exr. 1: ', person.describe());
 
 // ===================================================
 
@@ -67,19 +67,17 @@ class CylinderVolume
     computeVolume()
     {
         let v = pi * Math.pow(this.getR(), 2) * this.getH();
-        console.log(v, typeof Math.pow(this.getR(), 2), this.pi);
         return v;
     }
 }
 
 const cylinderVolume = new CylinderVolume(2,5);
-console.log( cylinderVolume.computeVolume() );
+console.log( 'Exr. 2: The volume of the cylinder is: ', cylinderVolume.computeVolume() );
 
 // =========================================================
 
 // 3. Tick Tock
 
-let timer;
 
 class TickTock
 {
@@ -88,7 +86,7 @@ class TickTock
         this.template = template;
     } 
  
-    render(template) 
+    render = () => 
     {
         let date = new Date();
     
@@ -111,20 +109,20 @@ class TickTock
   
     stop() 
     {
-      clearInterval(timer);
+      clearInterval(this.timer);
     }
   
     start() 
     {
       this.render();
-      timer = setInterval(render, 1000);
+      this.timer = setInterval(this.render, 1000);
     }
 
   
 } //class
    
-// const tickTock = new TickTock({template: 'h:m:s'});
-// tickTock.start();
+ //const tickTock = new TickTock({template: 'h:m:s'});
+ //tickTock.start();
 
 // ================================================================
 
@@ -193,4 +191,4 @@ class TickTock
   tv.setChannel();
   tv.increaseVolume()
 
-  console.log(tv.showStatus());
+  console.log( 'Exr 4: ', tv.showStatus());
