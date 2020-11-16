@@ -58,7 +58,6 @@ class Clock {
   
     stop() {
       clearInterval(this.timer);
-      log(this.output)
     };
   
     start() {
