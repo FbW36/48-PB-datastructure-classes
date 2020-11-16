@@ -38,26 +38,21 @@ console.log(cylinder.calculateVolume()); // 226.1947
 // Rewrite the following code to use the "class" syntax.
 
 class Clock {
-	constructor(template) {
-		this.template = template;
-		// this.timer = null;
+	constructor(obj) {
+		this.template = obj.template;
 	}
 	
-	// render should be an arrow function. otherwise, setInterval (a global method) won't be able to call it...
-	render = () => {
+	render() {
 		let date = new Date();
 
 		let hours = date.getHours();
 		hours = hours < 10 ? '0' + hours : hours;
-		// if (hours < 10) this.hours = '0' + hours;
 
 		let mins = date.getMinutes();
 		mins = mins < 10 ? '0' + mins : mins;
-		// if (mins < 10) this.mins = '0' + mins;
 
 		let secs = date.getSeconds();
 		secs = secs < 10 ? '0' + secs : secs;
-		// if (secs < 10) this.secs = '0' + secs;
 
 		let output = this.template
 			.replace('h', hours)
@@ -73,14 +68,17 @@ class Clock {
 
 	start() {
 		this.render();
-		this.timer = setInterval(this.render, 1000);
+		this.timer = setInterval(() => this.render(), 1000);
+		// this.timer = setInterval(this.render, 1000); // This won't work because setInterval is a global function and render() doesn't exist within its scope.
+		// A) the callback function inside setInterval should be an arrow function that returns the result of calling this.render().
+		// B) render should be defined as an arrow function above.
 	};
+
 
 }
 
-// let clock = new Clock({ template: 'h:m:s' });
-let clock = new Clock('h:m:s');
-// clock.start();
+let clock = new Clock({ template: 'h:m:s' });
+clock.start();
 
 
 
