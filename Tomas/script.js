@@ -22,7 +22,7 @@ class Volume {
         this.height = h
     }
     calcVolume() {
-        return Number((3.14 * Math.pow(this.radius,2) * this.height).toFixed(4))
+        return Number((Math.PI * Math.pow(this.radius,2) * this.height).toFixed(4))
     }
 }
 const volume = new Volume(4.2,8.1)
