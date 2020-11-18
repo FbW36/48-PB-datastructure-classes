@@ -44,7 +44,7 @@ console.log( 'Exr. 1: ', person.describe());
 
 // V = πr2h
 
-const pi = 3.14;
+const pi = 3.14159265358979323846;
 
 class CylinderVolume
 {
@@ -66,7 +66,7 @@ class CylinderVolume
 
     computeVolume()
     {
-        let v = pi * Math.pow(this.getR(), 2) * this.getH();
+        let v = pi.toFixed(5) * Math.pow(this.getR(), 2) * this.getH();
         return v;
     }
 }
