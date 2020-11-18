@@ -14,15 +14,18 @@ personDescription.describe();
 
 // 2. Volume
 class Cylinder {
-    constructor(radius, hight) {
+    constructor(radius, height) {
         this.radius = radius;
+        this.height = height;
     }
 
     calculate() {
-
+        return (Math.PI*this.radius ** 2*this.height).toFixed(4);
     }
 }
 
+let volume = new Cylinder(4, 7);
+console.log(volume.calculate())
 // 3. Tick Tock
 class Clock {
     constructor(object, timer) {
