@@ -41,7 +41,7 @@ console.log(volume1.getVolume());
 
 class Clock {
   constructor({ template }) {
-    let timer;
+    this.timer;
     this.template = template;
   }
 
@@ -62,68 +62,64 @@ class Clock {
       .replace("s", secs);
 
     console.log(output);
+
     return output;
   }
 
   stop() {
-    this.stop = function () {
-      clearInterval(timer);
-    };
-    return this.stop;
+    clearInterval(this.timer);
   }
 
   start() {
-    this.start = function () {
-      render = () => {
-        timer = setInterval(render, 1000);
-      };
-    };
-    return this.start;
+    this.render();
+    this.timer = setInterval(this.render.bind(this), 1000);
   }
 }
 
 let clock = new Clock({ template: "h:m:s" });
 clock.start();
+clock.stop();
+//----------------------------------
+// function Clock({ template }) {
+//   let timer;
 
-/*function Clock({ template }) {
-  let timer;
+//   function render() {
+//     let date = new Date();
 
-  function render() {
-    let date = new Date();
+//     let hours = date.getHours();
+//     if (hours < 10) hours = "0" + hours;
 
-    let hours = date.getHours();
-    if (hours < 10) hours = "0" + hours;
+//     let mins = date.getMinutes();
+//     if (mins < 10) mins = "0" + mins;
 
-    let mins = date.getMinutes();
-    if (mins < 10) mins = "0" + mins;
+//     let secs = date.getSeconds();
+//     if (secs < 10) secs = "0" + secs;
 
-    let secs = date.getSeconds();
-    if (secs < 10) secs = "0" + secs;
+//     let output = template
+//       .replace("h", hours)
+//       .replace("m", mins)
+//       .replace("s", secs);
 
-    let output = template
-      .replace("h", hours)
-      .replace("m", mins)
-      .replace("s", secs);
+//     console.log(output);
+//   }
 
-    console.log(output);
-  }
+//   this.stop = function () {
+//     clearInterval(timer);
+//   };
 
-  this.stop = function () {
-    clearInterval(timer);
-  };
+//   this.start = function () {
+//     render();
+//     timer = setInterval(render, 1000);
+//   };
+// }
 
-  this.start = function () {
-    render();
-    timer = setInterval(render, 1000);
-  };
-}
-
-let clock = new Clock({ template: "h:m:s" });
-clock.start(); /*
-
-
-
--------------------------------####-----------------------------
+// let clock = new Clock({ template: "h:m:s" });
+// //clock.start();
+// clock.stop();
+// console.log(Clock({ }));
+// console.log( new Clock({}));
+// console.log(clock.timer);
+//-------------------------------####-----------------------------
 
 //* 4. TV Class
 /*Create a TV class with properties like brand, channel and volume.
